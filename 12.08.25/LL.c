@@ -149,7 +149,7 @@ int main()
             break;
 
         default:
-            printf("Invalid choice!!\n")p
+            printf("Invalid choice!!\n");
         }
     } while (1);
     return 0;
