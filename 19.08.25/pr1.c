@@ -7,27 +7,27 @@ struct Node
     struct Node *next;
 };
 
-void displayLL(struct Node **head)
+void displayLL_085(struct Node **head_085)
 {
-    if (*head == NULL)
+    if (*head_085 == NULL)
     {
         printf("Linked List is empty\n");
     }
     else
     {
-        struct Node *temp = *head;
-        while (temp != NULL)
+        struct Node *temp_085 = *head_085;
+        while (temp_085 != NULL)
         {
-            printf("%d --> ", temp->val);
-            temp = temp->next;
+            printf("%d --> ", temp_085->val);
+            temp_085 = temp_085->next;
         }
         printf("END\n");
     }
 }
 
-void checkEmpty(int size)
+void checkEmpty_085(int size_085)
 {
-    if (size == 0)
+    if (size_085 == 0)
     {
         printf("Linked List is empty\n\n");
     }
@@ -37,84 +37,93 @@ void checkEmpty(int size)
     }
 }
 
-struct Node *createNode()
+struct Node *createNode_085()
 {
-    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
-    if (!newNode)
+    struct Node *newNode_085 = (struct Node *)malloc(sizeof(struct Node));
+    if (!newNode_085)
     {
         printf("Memory allocation failed!!\n");
         exit(1);
     }
 
-    int val;
+    int val_085;
     printf("Enter value: ");
-    scanf("%d", &val);
-    newNode->val = val;
-    newNode->next = NULL;
+    scanf("%d", &val_085);
+    newNode_085->val = val_085;
+    newNode_085->next = NULL;
 
-    return newNode;
+    return newNode_085;
 }
 
-void insertFirst(struct Node **head, int *size, struct Node **tail)
+void insertFirst_085(struct Node **head_085, int *size_085, struct Node **tail_085)
 {
 
-    struct Node *newNode = createNode();
+    struct Node *newNode_085 = createNode_085();
 
-    if (*head == NULL)
+    if (*head_085 == NULL)
     { // means this is the first element we are inserting
-        *head = newNode;
-        *tail = newNode;
-        (*size)++;
+        *head_085 = newNode_085;
+        *tail_085 = newNode_085;
+        (*size_085)++;
     }
     else
     {
-        newNode->next = *head;
-        *head = newNode;
-        (*size)++;
+        newNode_085->next = *head_085;
+        *head_085 = newNode_085;
+        (*size_085)++;
     }
 }
 
-void inserEnd(struct Node **tail, int *size, struct Node **head)
+void inserEnd_085(struct Node **tail_085, int *size_085, struct Node **head_085)
 {
-    struct Node *newNode = createNode();
+    struct Node *newNode_085 = createNode_085();
 
-    if (*tail == NULL)
+    if (*tail_085 == NULL)
     {
-        *head = newNode;
-        *tail = newNode;
-        (*size)++;
+        *head_085 = newNode_085;
+        *tail_085 = newNode_085;
+        (*size_085)++;
     }
     else
     {
-        (*tail)->next = newNode;
-        *tail = newNode;
-        (*size)++;
+        (*tail_085)->next = newNode_085;
+        *tail_085 = newNode_085;
+        (*size_085)++;
     }
 }
 
-void insertAtPosition(struct Node **head, int *size, struct Node **tail)
+void insertAtPosition_085(struct Node **head_085, int *size_085, struct Node **tail_085)
 {
-    int pos;
+    int pos_085;
     printf("Enter position: ");
-    scanf("%d", &pos);
+    scanf("%d", &pos_085);
 
-    if (pos < 1 || pos > *size)
+    if (pos_085 < 1 || pos_085 > *size_085)
     {
-        printf("Position is more than the valid size(%d)\n", *size);
+        printf("Position is more than the valid size(%d)\n", *size_085);
         return;
     }
-    if (pos == 1)
+    if (pos_085 == 1)
     {
-        insertFirst(head, size, tail);
+        insertFirst_085(head_085, size_085, tail_085);
         return;
     }
-    if (pos == *size)
+    if (pos_085 == *size_085)
     {
-        inserEnd(tail, size, head);
+        inserEnd_085(tail_085, size_085, head_085);
         return;
     }
     else
     {
+        int count = 0;
+        struct Node *temp = *head_085;
+        while(pos_085 > 1){
+            temp = temp->next;
+            pos_085--;
+        }
+        struct Node *node = createNode_085();
+        node->next = temp->next;
+        temp->next = node;
     }
 }
 
